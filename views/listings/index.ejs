@@ -1,0 +1,107 @@
+<% layout("/layouts/boilerplate") -%>
+
+<div class="usuggest-home">
+
+    <section class="hero-section">
+        <div class="hero-content">
+            <p class="hero-tag">YOUR NEXT PLACE TO DISCOVER</p>
+
+            <h1>
+                Don't just visit places.<br>
+                <span>Suggest them.</span>
+            </h1>
+
+            <p class="hero-description">
+                Discover beautiful places recommended by people who have
+                actually been there.
+            </p>
+
+            <a href="#suggestions" class="hero-btn">
+                Explore suggestions
+            </a>
+        </div>
+    </section>
+
+    <section class="suggestions-section" id="suggestions">
+
+        <div class="section-heading">
+            <div>
+                <p class="section-tag">COMMUNITY PICKS</p>
+                <h2>Places worth suggesting</h2>
+            </div>
+
+            <p class="section-description">
+                Hidden gems, peaceful escapes and unforgettable places
+                shared by our community.
+            </p>
+        </div>
+
+        <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
+
+            <% for (let list of allistings) { %>
+
+                <div class="col">
+
+                    <a href="/listing/<%= list._id %>" class="listing-link">
+
+                        <div class="usuggest-card">
+
+                            <div class="image-wrapper">
+
+                                <img
+                                    src="<%= list.image.url %>"
+                                    class="usuggest-card-image"
+                                    alt="<%= list.title %>"
+                                >
+
+                                <div class="image-gradient"></div>
+
+                                <div class="suggest-badge">
+                                    ✦ Suggested
+                                </div>
+
+                            </div>
+
+
+                            <div class="usuggest-card-body">
+
+                                <div class="location-row">
+                                    <span>📍</span>
+                                    <span><%= list.location %></span>
+                                </div>
+
+                                <h3>
+                                    <%= list.title %>
+                                </h3>
+
+                                <p class="card-description">
+                                    A place worth adding to your list.
+                                </p>
+
+                                <div class="card-bottom">
+
+                                    <span class="price">
+                                        ₹<%= list.price %>
+                                    </span>
+
+                                    <span class="view-place">
+                                        Explore →
+                                    </span>
+
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                    </a>
+
+                </div>
+
+            <% } %>
+
+        </div>
+
+    </section>
+
+</div>

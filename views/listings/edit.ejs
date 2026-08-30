@@ -1,0 +1,65 @@
+<% layout("/layouts/boilerplate") -%>
+
+
+                <div class="row">
+                        <div class="col-8 offset-2">
+                                <h3> Edit Your Listing's Details </h3>
+                                <br>
+                  <form method="post" action="/listings/<%= oneList._id %>?_method=PUT" novalidate class="needs-validation" enctype="multipart/form-data">
+
+                                        <div class="mb-3">
+                                                <label for="title" class="form-label">Title</label>
+                                                <input type="text" value="<%=oneList.title%>" name="Listing[title]"
+                                                        id="title" class="form-control" required/>
+                                                        <div class="invalid-feedback"> Please enter a title. </div>
+                                                        
+                                                
+                                        </div>
+                                      <div class="mb-3">
+                                          <label for="image" class="form-label">Image Link</label>
+                                          <input type="text" placeholder="Enter image URL/Link"
+                                          name="Listing[image][url]" id="image" class="form-control"
+                                          value="<%=oneList.image.url %>" />
+                                      </div>
+                                      <div class="mb-3">
+                                          <label for="imageFile" class="form-label">Or Upload a New Image</label>
+                                          <input type="file" name="Listing[image]" id="imageFile" class="form-control" accept="image/*" />
+                                      </div>
+                                                
+                                      
+                                        <div class="mb-3">
+                                                <label for="description" class="form-label">Description</label>
+                                                <textarea name="Listing[description]" class="form-control"
+                                                id="description" required><%= oneList.description%> </textarea>
+                                                <div class="invalid-feedback"> Please enter a description. </div>
+                                        </div>
+                                        <div class="mb-3">
+                                                <label for="price" class="form-label">Price</label>
+                                                <input type="number" value="<%= oneList.price %>" name="Listing[price]"
+                                                id="price" class="form-control" required/>
+                                                <div class="invalid-feedback"> Please enter a price. </div>
+                                        </div>
+                                        <div class="mb-3">
+                                                <label for="location" class="form-label">Location</label>
+                                                <input type="text" value="<%=oneList.location%>"
+                                                name="Listing[location]" id="location" class="form-control" required/>
+                                                <div class="invalid-feedback"> Please enter a location. </div>
+                                        </div>
+                                        <div class="mb-3">
+                                                <label for="country" class="form-label">Country</label>
+                                                <input type="text" value="<%=oneList.country%>" name="Listing[country]"
+                                                id="country" class="form-control" required/>
+                                                <div class="invalid-feedback"> Please enter a country. </div>
+                                        </div>
+                                        <br>
+
+                                        <button class="btn btn-dark"> SUBMIT </button
+                                </form>
+                                <br>
+                                <br>
+                        </div>
+                </div>
+                
+                
+
+
