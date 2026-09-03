@@ -2,7 +2,7 @@
 <div class="container mt-2 mb-5">
     <div class="row">
         <div class="col-12 col-md-10 col-lg-8 mx-auto">
-            
+
             <h3 class="text-center mb-3">
                 <i>Details of : <%= listings.title %></i>
             </h3>
@@ -41,7 +41,7 @@
                     <% } %>
                 </div>
             </div>
-            
+
             <hr class="my-4">
             <h4 class="mb-3">
                 Leave a Review
@@ -79,68 +79,69 @@
                 <button class="btn btn-dark">
                     Submit Review
                 </button>
+            </form>
 
-                <hr>
+            <hr>
 
-                  <% if (listings.reviews && listings.reviews.length > 0) { %>
+            <% if (listings.reviews && listings.reviews.length > 0) { %>
 
-    <div class="mt-5">
+            <div class="mt-5">
 
-        <h4 class="mb-4">What people are saying</h4>
+                <h4 class="mb-4">What people are saying</h4>
 
-        <div class="row g-4">
+                <div class="row g-4">
 
-            <% for (let review of listings.reviews) { %>
+                    <% for (let review of listings.reviews) { %>
 
-                <div class="col-12 col-md-6">
+                        <div class="col-12 col-md-6">
 
-                    <div class="card border-0 shadow-sm h-100">
+                            <div class="card border-0 shadow-sm h-100">
 
-                        <div class="card-body p-4">
+                                <div class="card-body p-4">
 
-                            <div class="mb-3">
-                                <strong>
-                                    <%= review.author ? review.author.username : "Anonymous" %>
-                                </strong>
+                                    <div class="d-flex align-items-center gap-2 mb-3">
+                                        <div class="rounded-circle bg-dark text-white d-flex align-items-center justify-content-center"
+                                            style="width: 36px; height: 36px; font-size: 14px; font-weight: 500; flex-shrink: 0;">
+                                            <%= review.author ? review.author.username.charAt(0).toUpperCase() : "?" %>
+                                        </div>
+                                        <div>
+                                            <strong>
+                                                <%= review.author ? review.author.username : "Anonymous" %>
+                                            </strong>
+                                            <div class="text-muted small">
+                                                Verified recommendation
+                                            </div>
+                                        </div>
+                                    </div>
 
-                                <div class="text-muted small">
-                                    Verified recommendation
+                                    <div class="mb-3">
+                                        <% for(let i = 0; i < review.rating; i++) { %>
+                                            ⭐
+                                        <% } %>
+                                    </div>
+
+                                    <p class="card-text mb-3">
+                                        "<%= review.comment %>"
+                                    </p>
+
+                                    <small class="text-muted">
+                                        <%= review.createdAt.toLocaleDateString("en-IN") %>
+                                    </small>
+
                                 </div>
+
                             </div>
-
-                            <div class="mb-3">
-                                <% for(let i = 0; i < review.rating; i++) { %>
-                                    ⭐
-                                <% } %>
-                            </div>
-
-                            <p class="card-text mb-3">
-                                "<%= review.comment %>"
-                            </p>
-
-                            <small class="text-muted">
-                                <%= review.createdAt.toLocaleDateString("en-IN") %>
-                            </small>
 
                         </div>
 
-                    </div>
+                    <% } %>
 
                 </div>
+
+            </div>
 
             <% } %>
 
         </div>
-
-    </div>
-
-<% } %>
-
-
-            </form>
-        </div>
     </div>
 </div>
-
-
-
